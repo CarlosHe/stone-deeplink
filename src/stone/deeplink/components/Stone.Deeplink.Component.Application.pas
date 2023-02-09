@@ -70,7 +70,7 @@ constructor TStoneDeeplinkApplicationComponent.Create(AOwner: TComponent);
 begin
   inherited;
 {$IFDEF ANDROID}
-  FStoneDeeplinkApplication := TStoneDeeplinkAndroidApplication.New('stone_deeplink_schema_return');
+  FStoneDeeplinkApplication := TStoneDeeplinkAndroidApplication.New(FScheme);
   FStoneDeeplinkApplication.SetPaymentSuccess(DoPaymentSuccess);
   FStoneDeeplinkApplication.SetPaymentError(DoPaymentError);
 {$ENDIF}
