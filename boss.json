@@ -4,6 +4,6 @@
 	"version": "1.0.0",
 	"homepage": "https://github.com/CarlosHe/stone-deeplink",
 	"mainsrc": "./src",
-	"projects": [],
+	"projects": ["stone_deeplink.dproj"],
 	"dependencies": {}
 }
