@@ -1,0 +1,81 @@
+package stone_deeplink;
+
+{$R *.res}
+{$R *.dres}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  fmx;
+
+contains
+  Stone.Deeplink in 'src\stone\deeplink\Stone.Deeplink.pas',
+  Stone.Deeplink.Adapter.Android.Cancelation in 'src\stone\deeplink\adapters\Stone.Deeplink.Adapter.Android.Cancelation.pas',
+  Stone.Deeplink.Adapter.Android.Payment in 'src\stone\deeplink\adapters\Stone.Deeplink.Adapter.Android.Payment.pas',
+  Stone.Deeplink.Adapter.Android.PaymentReturn in 'src\stone\deeplink\adapters\Stone.Deeplink.Adapter.Android.PaymentReturn.pas',
+  Stone.Deeplink.Adapters in 'src\stone\deeplink\adapters\Stone.Deeplink.Adapters.pas',
+  Stone.Deeplink.Android.Application in 'src\stone\deeplink\applications\Stone.Deeplink.Android.Application.pas',
+  Stone.Deeplink.Applications in 'src\stone\deeplink\applications\Stone.Deeplink.Applications.pas',
+  Stone.Deeplink.Builder.Entity.Cancelation in 'src\stone\deeplink\builders\Stone.Deeplink.Builder.Entity.Cancelation.pas',
+  Stone.Deeplink.Builder.Entity.Payment in 'src\stone\deeplink\builders\Stone.Deeplink.Builder.Entity.Payment.pas',
+  Stone.Deeplink.Builder.Entity.PaymentReturn in 'src\stone\deeplink\builders\Stone.Deeplink.Builder.Entity.PaymentReturn.pas',
+  Stone.Deeplink.Builders in 'src\stone\deeplink\builders\Stone.Deeplink.Builders.pas',
+  Stone.Deeplink.Component.Application in 'src\stone\deeplink\components\Stone.Deeplink.Component.Application.pas',
+  Stone.Deeplink.Components in 'src\stone\deeplink\components\Stone.Deeplink.Components.pas',
+  Stone.Deeplink.Contract.Adapter.Cancelation in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Adapter.Cancelation.pas',
+  Stone.Deeplink.Contract.Adapter.Payment in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Adapter.Payment.pas',
+  Stone.Deeplink.Contract.Adapter.PaymentReturn in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Adapter.PaymentReturn.pas',
+  Stone.Deeplink.Contract.Application in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Application.pas',
+  Stone.Deeplink.Contract.Builder.Entity.Cancelation in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Builder.Entity.Cancelation.pas',
+  Stone.Deeplink.Contract.Builder.Entity.Payment in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Builder.Entity.Payment.pas',
+  Stone.Deeplink.Contract.Builder.Entity.PaymentReturn in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Builder.Entity.PaymentReturn.pas',
+  Stone.Deeplink.Contract.Entity.Cancelation in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Entity.Cancelation.pas',
+  Stone.Deeplink.Contract.Entity.Payment in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Entity.Payment.pas',
+  Stone.Deeplink.Contract.Entity.PaymentReturn in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Entity.PaymentReturn.pas',
+  Stone.Deeplink.Contract.Proxy.Cancelation in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Proxy.Cancelation.pas',
+  Stone.Deeplink.Contract.Proxy.Payment in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Proxy.Payment.pas',
+  Stone.Deeplink.Contract.Proxy.Printer in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Proxy.Printer.pas',
+  Stone.Deeplink.Contracts in 'src\stone\deeplink\contracts\Stone.Deeplink.Contracts.pas',
+  Stone.Deeplink.Entities in 'src\stone\deeplink\entities\Stone.Deeplink.Entities.pas',
+  Stone.Deeplink.Entity.Cancelation in 'src\stone\deeplink\entities\Stone.Deeplink.Entity.Cancelation.pas',
+  Stone.Deeplink.Entity.Payment in 'src\stone\deeplink\entities\Stone.Deeplink.Entity.Payment.pas',
+  Stone.Deeplink.Entity.PaymentReturn in 'src\stone\deeplink\entities\Stone.Deeplink.Entity.PaymentReturn.pas',
+  Stone.Deeplink.Enum.EditableAmountType in 'src\stone\deeplink\enums\Stone.Deeplink.Enum.EditableAmountType.pas',
+  Stone.Deeplink.Enum.InstallmentType in 'src\stone\deeplink\enums\Stone.Deeplink.Enum.InstallmentType.pas',
+  Stone.Deeplink.Enum.TransactionType in 'src\stone\deeplink\enums\Stone.Deeplink.Enum.TransactionType.pas',
+  Stone.Deeplink.Enums in 'src\stone\deeplink\enums\Stone.Deeplink.Enums.pas',
+  Stone.Deeplink.Helper.Enum.InstallmentType in 'src\stone\deeplink\helpers\Stone.Deeplink.Helper.Enum.InstallmentType.pas',
+  Stone.Deeplink.Helper.Enum.TransactionType in 'src\stone\deeplink\helpers\Stone.Deeplink.Helper.Enum.TransactionType.pas',
+  Stone.Deeplink.Proxies in 'src\stone\deeplink\proxies\Stone.Deeplink.Proxies.pas',
+  Stone.Deeplink.Proxy.Android.Cancelation in 'src\stone\deeplink\proxies\Stone.Deeplink.Proxy.Android.Cancelation.pas',
+  Stone.Deeplink.Proxy.Android.Payment in 'src\stone\deeplink\proxies\Stone.Deeplink.Proxy.Android.Payment.pas',
+  Stone.Deeplink.Proxy.Android.Printer in 'src\stone\deeplink\proxies\Stone.Deeplink.Proxy.Android.Printer.pas',
+  Stone.Deeplink.Callbacks in 'src\stone\deeplink\types\Stone.Deeplink.Callbacks.pas',
+  Stone.Deeplink.Types in 'src\stone\deeplink\types\Stone.Deeplink.Types.pas',
+  Stone.Deeplink.Register in 'src\stone\deeplink\Stone.Deeplink.Register.pas';
+
+end.
