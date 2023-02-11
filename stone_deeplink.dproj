@@ -5,7 +5,7 @@
         <ProjectVersion>19.5</ProjectVersion>
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>32785</TargetedPlatforms>
         <AppType>Package</AppType>
@@ -212,17 +212,13 @@
         <DCCReference Include="src\stone\deeplink\types\Stone.Deeplink.Callbacks.pas"/>
         <DCCReference Include="src\stone\deeplink\types\Stone.Deeplink.Types.pas"/>
         <DCCReference Include="src\stone\deeplink\Stone.Deeplink.Register.pas"/>
-        <RcItem Include="res\icon32.png">
-            <ResourceType>RCDATA</ResourceType>
-            <ResourceId>TStoneDeeplink32_PNG</ResourceId>
-        </RcItem>
         <RcItem Include="res\icon128.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>TStoneDeeplink128_PNG</ResourceId>
         </RcItem>
         <RcItem Include="res\icon16.png">
             <ResourceType>RCDATA</ResourceType>
-            <ResourceId>TStoneDeeplin16_PNG</ResourceId>
+            <ResourceId>TStoneDeeplink16_PNG</ResourceId>
         </RcItem>
         <RcItem Include="res\icon24.png">
             <ResourceType>RCDATA</ResourceType>
@@ -232,9 +228,17 @@
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>TStoneDeeplink256_PNG</ResourceId>
         </RcItem>
+        <RcItem Include="res\icon32.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>TStoneDeeplink32_PNG</ResourceId>
+        </RcItem>
         <RcItem Include="res\icon64.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>TStoneDeeplink64_PNG</ResourceId>
+        </RcItem>
+        <RcItem Include="res\icon128.bmp">
+            <ResourceType>BITMAP</ResourceType>
+            <ResourceId>TStoneDeeplink</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
