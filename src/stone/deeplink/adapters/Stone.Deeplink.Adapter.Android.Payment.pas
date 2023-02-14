@@ -55,9 +55,13 @@ begin
     .appendQueryParameter(StringToJString('return_scheme'), StringToJString(FPayment.GetReturnScheme))
     .appendQueryParameter(StringToJString('amount'), StringToJString(UInt64(FPayment.GetAmount).ToString))
     .appendQueryParameter(StringToJString('editable_amount'), StringToJString(Integer(FPayment.GetEditableAmount).ToString))
-    .appendQueryParameter(StringToJString('transaction_type'), StringToJString(FPayment.GetTransactionType.ToString.ToLower))
-    .appendQueryParameter(StringToJString('installment_type'), StringToJString(FPayment.GetInstallmentType.ToString.ToLower))
-    .appendQueryParameter(StringToJString('installment_count'), StringToJString(Byte(FPayment.GetInstallmentCount).ToString));
+    .appendQueryParameter(StringToJString('transaction_type'), StringToJString(FPayment.GetTransactionType.ToString.ToLower));
+
+  if FPayment.GetTransactionType = TStoneDeeplinkTransactionType.Credit then
+    LURI.appendQueryParameter(StringToJString('installment_type'), StringToJString(FPayment.GetInstallmentType.ToString.ToLower));
+
+  if FPayment.GetInstallmentType <> TStoneDeeplinkInstallmentType.None then
+    LURI.appendQueryParameter(StringToJString('installment_count'), StringToJString(Byte(FPayment.GetInstallmentCount).ToString));
 
   if FPayment.GetOrderId > 0 then
     LURI.appendQueryParameter(StringToJString('order_id'), StringToJString(UInt64(FPayment.GetOrderId).ToString));
