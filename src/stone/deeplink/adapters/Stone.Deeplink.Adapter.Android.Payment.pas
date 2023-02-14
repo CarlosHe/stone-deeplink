@@ -3,6 +3,7 @@ unit Stone.Deeplink.Adapter.Android.Payment;
 interface
 
 {$IFDEF ANDROID}
+
 uses
   Androidapi.JNI.GraphicsContentViewText,
   Stone.Deeplink.Contract.Adapter.Payment,
@@ -28,10 +29,11 @@ type
 implementation
 
 {$IFDEF ANDROID}
+
 uses
   Androidapi.Helpers,
   Androidapi.JNI.Net,
-  Androidapi.Jni.JavaTypes,
+  Androidapi.JNI.JavaTypes,
   System.SysUtils,
   Stone.Deeplink.Helper.Enum.InstallmentType,
   Stone.Deeplink.Helper.Enum.TransactionType,
@@ -58,10 +60,12 @@ begin
     .appendQueryParameter(StringToJString('transaction_type'), StringToJString(FPayment.GetTransactionType.ToString.ToLower));
 
   if FPayment.GetTransactionType = TStoneDeeplinkTransactionType.Credit then
+  begin
     LURI.appendQueryParameter(StringToJString('installment_type'), StringToJString(FPayment.GetInstallmentType.ToString.ToLower));
 
-  if FPayment.GetInstallmentType <> TStoneDeeplinkInstallmentType.None then
-    LURI.appendQueryParameter(StringToJString('installment_count'), StringToJString(Byte(FPayment.GetInstallmentCount).ToString));
+    if FPayment.GetInstallmentType <> TStoneDeeplinkInstallmentType.None then
+      LURI.appendQueryParameter(StringToJString('installment_count'), StringToJString(Byte(FPayment.GetInstallmentCount).ToString));
+  end;
 
   if FPayment.GetOrderId > 0 then
     LURI.appendQueryParameter(StringToJString('order_id'), StringToJString(UInt64(FPayment.GetOrderId).ToString));
