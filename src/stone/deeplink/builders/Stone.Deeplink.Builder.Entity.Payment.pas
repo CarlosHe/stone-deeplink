@@ -61,6 +61,7 @@ end;
 constructor TStoneDeeplinkPaymentEntityBuilder.Create;
 begin
   FEditableAmount := TStoneDeeplinkEditableAmountType.Uneditable;
+  FInstallmentCount := 2;
 end;
 
 class function TStoneDeeplinkPaymentEntityBuilder.New: IStoneDeeplinkPaymentEntityBuilder;
