@@ -11,6 +11,7 @@ type
 
   TStoneDeeplinkPaymentProxy = class(TInterfacedObject, IStoneDeeplinkPaymentProxy)
   strict private
+    { strict private declarations }
     constructor Create;
   private
     { private declarations }

@@ -11,6 +11,7 @@ type
 
   TStoneDeeplinkCancelationProxy = class(TInterfacedObject, IStoneDeeplinkCancelationProxy)
   strict private
+    { strict private declarations }
     constructor Create;
   private
     { private declarations }

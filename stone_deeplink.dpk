@@ -10,21 +10,21 @@ package stone_deeplink;
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
-{$LOCALSYMBOLS ON}
+{$LOCALSYMBOLS OFF}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
-{$OVERFLOWCHECKS ON}
-{$RANGECHECKS ON}
-{$REFERENCEINFO ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
+{$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$IMPLICITBUILD ON}
 
@@ -76,6 +76,13 @@ contains
   Stone.Deeplink.Proxy.Android.Printer in 'src\stone\deeplink\proxies\Stone.Deeplink.Proxy.Android.Printer.pas',
   Stone.Deeplink.Callbacks in 'src\stone\deeplink\types\Stone.Deeplink.Callbacks.pas',
   Stone.Deeplink.Types in 'src\stone\deeplink\types\Stone.Deeplink.Types.pas',
-  Stone.Deeplink.Register in 'src\stone\deeplink\Stone.Deeplink.Register.pas';
+  Stone.Deeplink.Register in 'src\stone\deeplink\Stone.Deeplink.Register.pas',
+  Stone.Deeplink.Contract.Adapter.CancelationReturn in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Adapter.CancelationReturn.pas',
+  Stone.Deeplink.Contract.Entity.CancelationReturn in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Entity.CancelationReturn.pas',
+  Stone.Deeplink.Contract.Builder.Entity.CancelationReturn in 'src\stone\deeplink\contracts\Stone.Deeplink.Contract.Builder.Entity.CancelationReturn.pas',
+  Stone.Deeplink.Entity.CancelationReturn in 'src\stone\deeplink\entities\Stone.Deeplink.Entity.CancelationReturn.pas',
+  Stone.Deeplink.Builder.Entity.CancelationReturn in 'src\stone\deeplink\builders\Stone.Deeplink.Builder.Entity.CancelationReturn.pas',
+  Stone.Deeplink.Adapter.Android.CancelationReturn in 'src\stone\deeplink\adapters\Stone.Deeplink.Adapter.Android.CancelationReturn.pas',
+  Stone.Deeplink.Helper.AmountType in 'src\stone\deeplink\helpers\Stone.Deeplink.Helper.AmountType.pas';
 
 end.

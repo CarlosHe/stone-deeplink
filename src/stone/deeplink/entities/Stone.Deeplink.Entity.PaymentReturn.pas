@@ -11,6 +11,7 @@ type
 
   TStoneDeeplinkPaymentReturnEntity = class(TInterfacedObject, IStoneDeeplinkPaymentReturnEntity)
   strict private
+    { strict private declarations }
     constructor Create;
   private
     { private declarations }

@@ -12,6 +12,7 @@ type
 
   TStoneDeeplinkCancelationAndroidAdapter = class(TInterfacedObject, IStoneDeeplinkCancelationAdapter)
   strict private
+    { strict private declarations }
     constructor Create(const ACancelation: IStoneDeeplinkCancelationEntity);
   private
     { private declarations }
@@ -31,7 +32,7 @@ implementation
 uses
   Androidapi.Helpers,
   Androidapi.JNI.Net,
-  Androidapi.Jni.JavaTypes,
+  Androidapi.JNI.JavaTypes,
   System.TypInfo,
   System.SysUtils;
 

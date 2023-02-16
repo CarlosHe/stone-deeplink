@@ -1,10 +1,10 @@
 unit Stone.Deeplink;
 
 {
--------------------------------------------------------------------------------------------
-|  author: Carlos Modesto                                                                 |
-|  page:   https://github.com/CarlosHe                                                    |
--------------------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------------------
+  |  author: Carlos Modesto                                                                 |
+  |  page:   https://github.com/CarlosHe                                                    |
+  -------------------------------------------------------------------------------------------
 }
 
 interface
@@ -26,6 +26,7 @@ type
   // adapters
   TStoneDeeplinkCancelationAndroidAdapter = Stone.Deeplink.Adapters.TStoneDeeplinkCancelationAndroidAdapter;
   TStoneDeeplinkPaymentAndroidAdapter = Stone.Deeplink.Adapters.TStoneDeeplinkPaymentAndroidAdapter;
+  TStoneDeeplinkCancelationReturnAndroidAdapter = Stone.Deeplink.Adapters.TStoneDeeplinkCancelationReturnAndroidAdapter;
   TStoneDeeplinkPaymentReturnAndroidAdapter = Stone.Deeplink.Adapters.TStoneDeeplinkPaymentReturnAndroidAdapter;
   // applications
   TStoneDeeplinkAndroidApplication = Stone.Deeplink.Applications.TStoneDeeplinkAndroidApplication;
@@ -33,6 +34,7 @@ type
   // builders
   TStoneDeeplinkCancelationEntityBuilder = Stone.Deeplink.Builders.TStoneDeeplinkCancelationEntityBuilder;
   TStoneDeeplinkPaymentEntityBuilder = Stone.Deeplink.Builders.TStoneDeeplinkPaymentEntityBuilder;
+  TStoneDeeplinkCancelationReturnEntityBuilder = Stone.Deeplink.Builders.TStoneDeeplinkCancelationReturnEntityBuilder;
   TStoneDeeplinkPaymentReturnEntityBuilder = Stone.Deeplink.Builders.TStoneDeeplinkPaymentReturnEntityBuilder;
   // components
   TStoneDeeplink = class(TStoneDeeplinkApplicationComponent);
@@ -40,14 +42,17 @@ type
   // contracts
   IStoneDeeplinkCancelationAdapter = Stone.Deeplink.Contracts.IStoneDeeplinkCancelationAdapter;
   IStoneDeeplinkPaymentAdapter = Stone.Deeplink.Contracts.IStoneDeeplinkPaymentAdapter;
+  IStoneDeeplinkCancelationReturnAdapter = Stone.Deeplink.Contracts.IStoneDeeplinkCancelationReturnAdapter;
   IStoneDeeplinkPaymentReturnAdapter = Stone.Deeplink.Contracts.IStoneDeeplinkPaymentReturnAdapter;
 {$ENDIF}
   IStoneDeeplinkApplication = Stone.Deeplink.Contracts.IStoneDeeplinkApplication;
   IStoneDeeplinkCancelationEntityBuilder = Stone.Deeplink.Contracts.IStoneDeeplinkCancelationEntityBuilder;
   IStoneDeeplinkPaymentEntityBuilder = Stone.Deeplink.Contracts.IStoneDeeplinkPaymentEntityBuilder;
+  IStoneDeeplinkCancelationReturnEntityBuilder = Stone.Deeplink.Contracts.IStoneDeeplinkCancelationReturnEntityBuilder;
   IStoneDeeplinkPaymentReturnEntityBuilder = Stone.Deeplink.Contracts.IStoneDeeplinkPaymentReturnEntityBuilder;
   IStoneDeeplinkCancelationEntity = Stone.Deeplink.Contracts.IStoneDeeplinkCancelationEntity;
   IStoneDeeplinkPaymentEntity = Stone.Deeplink.Contracts.IStoneDeeplinkPaymentEntity;
+  IStoneDeeplinkCancelationReturnEntity = Stone.Deeplink.Contracts.IStoneDeeplinkCancelationReturnEntity;
   IStoneDeeplinkPaymentReturnEntity = Stone.Deeplink.Contracts.IStoneDeeplinkPaymentReturnEntity;
   IStoneDeeplinkCancelationProxy = Stone.Deeplink.Contracts.IStoneDeeplinkCancelationProxy;
   IStoneDeeplinkPaymentProxy = Stone.Deeplink.Contracts.IStoneDeeplinkPaymentProxy;
@@ -55,6 +60,7 @@ type
   // entities
   TStoneDeeplinkCancelationEntity = Stone.Deeplink.Entities.TStoneDeeplinkCancelationEntity;
   TStoneDeeplinkPaymentEntity = Stone.Deeplink.Entities.TStoneDeeplinkPaymentEntity;
+  TStoneDeeplinkCancelationReturnEntity = Stone.Deeplink.Entities.TStoneDeeplinkCancelationReturnEntity;
   TStoneDeeplinkPaymentReturnEntity = Stone.Deeplink.Entities.TStoneDeeplinkPaymentReturnEntity;
   // enums
   TStoneDeeplinkTransactionType = Stone.Deeplink.Enums.TStoneDeeplinkTransactionType;
@@ -72,6 +78,8 @@ type
   TStoneDeeplinkOrderId = Stone.Deeplink.Types.TStoneDeeplinkOrderId;
   TOnPaymentSuccess = Stone.Deeplink.Callbacks.TOnPaymentSuccess;
   TOnPaymentError = Stone.Deeplink.Callbacks.TOnPaymentError;
+  TOnCancelationSuccess = Stone.Deeplink.Callbacks.TOnCancelationSuccess;
+  TOnCancelationError = Stone.Deeplink.Callbacks.TOnCancelationError;
 
 implementation
 

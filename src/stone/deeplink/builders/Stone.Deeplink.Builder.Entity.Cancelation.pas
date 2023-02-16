@@ -12,6 +12,7 @@ type
 
   TStoneDeeplinkCancelationEntityBuilder = class(TInterfacedObject, IStoneDeeplinkCancelationEntityBuilder)
   strict private
+    { strict private declarations }
     constructor Create;
   private
     { private declarations }

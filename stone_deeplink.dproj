@@ -212,6 +212,13 @@
         <DCCReference Include="src\stone\deeplink\types\Stone.Deeplink.Callbacks.pas"/>
         <DCCReference Include="src\stone\deeplink\types\Stone.Deeplink.Types.pas"/>
         <DCCReference Include="src\stone\deeplink\Stone.Deeplink.Register.pas"/>
+        <DCCReference Include="src\stone\deeplink\contracts\Stone.Deeplink.Contract.Adapter.CancelationReturn.pas"/>
+        <DCCReference Include="src\stone\deeplink\contracts\Stone.Deeplink.Contract.Entity.CancelationReturn.pas"/>
+        <DCCReference Include="src\stone\deeplink\contracts\Stone.Deeplink.Contract.Builder.Entity.CancelationReturn.pas"/>
+        <DCCReference Include="src\stone\deeplink\entities\Stone.Deeplink.Entity.CancelationReturn.pas"/>
+        <DCCReference Include="src\stone\deeplink\builders\Stone.Deeplink.Builder.Entity.CancelationReturn.pas"/>
+        <DCCReference Include="src\stone\deeplink\adapters\Stone.Deeplink.Adapter.Android.CancelationReturn.pas"/>
+        <DCCReference Include="src\stone\deeplink\helpers\Stone.Deeplink.Helper.AmountType.pas"/>
         <RcItem Include="res\icon128.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>TStoneDeeplink128_PNG</ResourceId>
@@ -284,6 +291,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\stone_deeplink.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>stone_deeplink.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\stone_deeplink.bpl" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>stone_deeplink.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

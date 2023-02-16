@@ -18,6 +18,7 @@ type
 
   TStoneDeeplinkPrinterProxy = class(TInterfacedObject, IStoneDeeplinkPrinterProxy)
   strict private
+    { strict private declarations }
     constructor Create;
   private
     { private declarations }

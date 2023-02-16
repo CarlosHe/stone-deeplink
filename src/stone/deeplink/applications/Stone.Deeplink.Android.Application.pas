@@ -3,6 +3,8 @@ unit Stone.Deeplink.Android.Application;
 interface
 
 {$IFDEF ANDROID}
+
+
 uses
   Androidapi.JNI.GraphicsContentViewText,
   System.Messaging,
@@ -10,6 +12,7 @@ uses
   Stone.Deeplink.Contract.Application,
   Stone.Deeplink.Contract.Entity.Cancelation,
   Stone.Deeplink.Contract.Entity.Payment,
+  Stone.Deeplink.Contract.Entity.CancelationReturn,
   Stone.Deeplink.Contract.Entity.PaymentReturn,
   Stone.Deeplink.Contract.Proxy.Cancelation,
   Stone.Deeplink.Contract.Proxy.Payment,
@@ -19,11 +22,15 @@ type
 
   TStoneDeeplinkAndroidApplication = class(TInterfacedObject, IStoneDeeplinkApplication)
   strict private
+    { strict private declarations }
     constructor Create(const AScheme: string);
   private
     { private declarations }
     FOnPaymentSuccess: TOnPaymentSuccess;
     FOnPaymentError: TOnPaymentError;
+    FOnCancelationSuccess: TOnCancelationSuccess;
+    FOnCancelationError: TOnCancelationError;
+    FExecuteCallbacks: Boolean;
     FScheme: string;
     FStoneDeeplinkPaymentProxy: IStoneDeeplinkPaymentProxy;
     FStoneDeeplinkCancelationProxy: IStoneDeeplinkCancelationProxy;
@@ -35,12 +42,18 @@ type
     function HandleIntentAction(const AIntent: JIntent): Boolean;
     procedure DoPaymentSuccess(const APaymentReturn: IStoneDeeplinkPaymentReturnEntity);
     procedure DoPaymentError(const ACode: Integer; const AMessage: string);
+    procedure DoCancelationSuccess(const ACancelationReturn: IStoneDeeplinkCancelationReturnEntity);
+    procedure DoCancelationError(const AReason: string; const AResponseCode: string);
   public
     { public declarations }
+    procedure SetExecuteCallbacks(const AExecuteCallbacks: Boolean);
+    function GetExecuteCallbacks: Boolean;
     procedure SetScheme(const AScheme: string);
     function GetScheme: string;
     procedure SetPaymentSuccess(const AOnPaymentSuccess: TOnPaymentSuccess);
     procedure SetPaymentError(const AOnPaymentError: TOnPaymentError);
+    procedure SetCancelationSuccess(const AOnCancelationSuccess: TOnCancelationSuccess);
+    procedure SetCancelationError(const AOnCancelationError: TOnCancelationError);
     procedure CallPayment(const APayment: IStoneDeeplinkPaymentEntity);
     procedure CallCancelation(const ACancelation: IStoneDeeplinkCancelationEntity);
     procedure CallCancelationForLastPaymentReturn;
@@ -51,6 +64,8 @@ type
 implementation
 
 {$IFDEF ANDROID}
+
+
 uses
   Androidapi.Helpers,
   Androidapi.JNI.App,
@@ -59,6 +74,7 @@ uses
   System.SysUtils,
   Stone.Deeplink.Proxy.Android.Cancelation,
   Stone.Deeplink.Proxy.Android.Payment,
+  Stone.Deeplink.Adapter.Android.CancelationReturn,
   Stone.Deeplink.Adapter.Android.PaymentReturn,
   Stone.Deeplink.Builder.Entity.Cancelation,
   Stone.Deeplink.Enum.EditableAmountType;
@@ -108,6 +124,18 @@ begin
   FScheme := AScheme;
 end;
 
+procedure TStoneDeeplinkAndroidApplication.DoCancelationError(const AReason, AResponseCode: string);
+begin
+  if Assigned(FOnCancelationError) then
+    FOnCancelationError(AReason, AResponseCode);
+end;
+
+procedure TStoneDeeplinkAndroidApplication.DoCancelationSuccess(const ACancelationReturn: IStoneDeeplinkCancelationReturnEntity);
+begin
+  if Assigned(FOnCancelationSuccess) then
+    FOnCancelationSuccess(ACancelationReturn);
+end;
+
 procedure TStoneDeeplinkAndroidApplication.DoPaymentError(const ACode: Integer; const AMessage: string);
 begin
   if Assigned(FOnPaymentError) then
@@ -119,6 +147,11 @@ begin
   FLastPaymentReturn := APaymentReturn;
   if Assigned(FOnPaymentSuccess) then
     FOnPaymentSuccess(APaymentReturn);
+end;
+
+function TStoneDeeplinkAndroidApplication.GetExecuteCallbacks: Boolean;
+begin
+  Result := FExecuteCallbacks;
 end;
 
 function TStoneDeeplinkAndroidApplication.GetScheme: string;
@@ -148,6 +181,8 @@ end;
 function TStoneDeeplinkAndroidApplication.HandleIntentAction(const AIntent: JIntent): Boolean;
 begin
   Result := False;
+  if not FExecuteCallbacks then
+    Exit;
   if (AIntent <> nil) then
   begin
     if (AIntent.GetScheme <> nil) and (AIntent.GetScheme.equals(StringToJString(FScheme))) then
@@ -159,14 +194,35 @@ begin
         else
           DoPaymentSuccess(TStoneDeeplinkPaymentReturnAndroidAdapter.New(AIntent).GetPaymentReturn)
       end
+      else if AIntent.getData.getHost.equals(StringToJString('cancel')) then
+      begin
+        if AIntent.getData.getQueryParameter(StringToJString('success')).equals(StringToJString('false')) then
+          DoCancelationError(JStringToString(AIntent.getData.getQueryParameter(StringToJString('reason'))), JStringToString(AIntent.getData.getQueryParameter(StringToJString('responsecode'))))
+        else
+          DoCancelationSuccess(TStoneDeeplinkCancelationReturnAndroidAdapter.New(AIntent).GetCancelationReturn);
+      end;
     end;
   end;
 end;
 
-class
-  function TStoneDeeplinkAndroidApplication.New(const AScheme: string): IStoneDeeplinkApplication;
+class function TStoneDeeplinkAndroidApplication.New(const AScheme: string): IStoneDeeplinkApplication;
 begin
   Result := Self.Create(AScheme);
+end;
+
+procedure TStoneDeeplinkAndroidApplication.SetCancelationError(const AOnCancelationError: TOnCancelationError);
+begin
+  FOnCancelationError := AOnCancelationError;
+end;
+
+procedure TStoneDeeplinkAndroidApplication.SetCancelationSuccess(const AOnCancelationSuccess: TOnCancelationSuccess);
+begin
+  FOnCancelationSuccess := AOnCancelationSuccess;
+end;
+
+procedure TStoneDeeplinkAndroidApplication.SetExecuteCallbacks(const AExecuteCallbacks: Boolean);
+begin
+  FExecuteCallbacks := AExecuteCallbacks;
 end;
 
 procedure TStoneDeeplinkAndroidApplication.SetPaymentError(const AOnPaymentError: TOnPaymentError);

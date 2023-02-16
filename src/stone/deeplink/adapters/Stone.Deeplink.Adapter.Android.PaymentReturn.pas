@@ -14,6 +14,7 @@ type
 
   TStoneDeeplinkPaymentReturnAndroidAdapter = class(TInterfacedObject, IStoneDeeplinkPaymentReturnAdapter)
   strict private
+    { strict private declarations }
     constructor Create(const AIntent: JIntent);
   private
     { private declarations }

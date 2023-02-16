@@ -3,7 +3,6 @@ unit Stone.Deeplink.Adapter.Android.Payment;
 interface
 
 {$IFDEF ANDROID}
-
 uses
   Androidapi.JNI.GraphicsContentViewText,
   Stone.Deeplink.Contract.Adapter.Payment,
@@ -13,6 +12,7 @@ type
 
   TStoneDeeplinkPaymentAndroidAdapter = class(TInterfacedObject, IStoneDeeplinkPaymentAdapter)
   strict private
+    { strict private declarations }
     constructor Create(const APayment: IStoneDeeplinkPaymentEntity);
   private
     { private declarations }
@@ -29,7 +29,6 @@ type
 implementation
 
 {$IFDEF ANDROID}
-
 uses
   Androidapi.Helpers,
   Androidapi.JNI.Net,
