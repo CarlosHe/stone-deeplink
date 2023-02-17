@@ -3,6 +3,7 @@ unit Stone.Deeplink.Helper.AmountType;
 interface
 
 uses
+  System.SysUtils,
   Stone.Deeplink.Types;
 
 type
@@ -14,14 +15,11 @@ type
     { protected declarations }
   public
     { public declarations }
-    class operator Implicit(AAmount: TStoneDeeplinkAmount): Double;
-    class operator Implicit(AAmount: TStoneDeeplinkAmount): UInt64;
-    class operator Implicit(AAmount: Double): TStoneDeeplinkAmount;
-    class operator Explicit(AAmount: TStoneDeeplinkAmount): Double;
-    class operator Explicit(AAmount: TStoneDeeplinkAmount): UInt64;
-    class operator Explicit(AAmount: Double): TStoneDeeplinkAmount;
-    function ToDouble: Double;
-    class function FromDouble(const AAmount: Double): TStoneDeeplinkAmount; static;
+    class function FromDouble(const AAmount: Double): TStoneDeeplinkAmount; inline; static;
+    class function FromString(const AAmount: string): TStoneDeeplinkAmount; inline; static;
+    function ToDouble: Double; inline;
+    function ToString: string; inline;
+    function ToFormatCurr(const AFormat: string = '##0.00'): string; inline;
   end;
 
 implementation
@@ -31,44 +29,29 @@ uses
 
 { TStoneDeeplinkAmountHelper }
 
-class operator TStoneDeeplinkAmountHelper.Explicit(AAmount: TStoneDeeplinkAmount): Double;
-begin
-  Result := AAmount.ToDouble;
-end;
-
-class operator TStoneDeeplinkAmountHelper.Explicit(AAmount: Double): TStoneDeeplinkAmount;
-begin
-  Result := FromDouble(AAmount);
-end;
-
-class operator TStoneDeeplinkAmountHelper.Explicit(AAmount: TStoneDeeplinkAmount): UInt64;
-begin
-  Result := UInt64(AAmount);
-end;
-
 class function TStoneDeeplinkAmountHelper.FromDouble(const AAmount: Double): TStoneDeeplinkAmount;
 begin
-  Result := Trunc(RoundTo(AAmount, 2) * 100);
+  Result := Trunc(RoundTo(AAmount, -2) * 100);
 end;
 
-class operator TStoneDeeplinkAmountHelper.Implicit(AAmount: Double): TStoneDeeplinkAmount;
+class function TStoneDeeplinkAmountHelper.FromString(const AAmount: string): TStoneDeeplinkAmount;
 begin
-  Result := FromDouble(AAmount);
-end;
-
-class operator TStoneDeeplinkAmountHelper.Implicit(AAmount: TStoneDeeplinkAmount): UInt64;
-begin
-  Result := UInt64(AAmount);
-end;
-
-class operator TStoneDeeplinkAmountHelper.Implicit(AAmount: TStoneDeeplinkAmount): Double;
-begin
-  Result := AAmount.ToDouble;
+  Result := FromDouble(StrToFloat(AAmount));
 end;
 
 function TStoneDeeplinkAmountHelper.ToDouble: Double;
 begin
   Result := Self / 100;
+end;
+
+function TStoneDeeplinkAmountHelper.ToFormatCurr(const AFormat: string): string;
+begin
+  Result := FormatCurr(AFormat, Self.ToDouble);
+end;
+
+function TStoneDeeplinkAmountHelper.ToString: string;
+begin
+  Result := Self.ToDouble.ToString;
 end;
 
 end.

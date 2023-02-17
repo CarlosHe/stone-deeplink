@@ -15,10 +15,8 @@ type
 
   public
     { public declarations }
-    class operator Implicit(AInstallmentType: TStoneDeeplinkInstallmentType): string;
-    class operator Explicit(AInstallmentType: TStoneDeeplinkInstallmentType): string;
-    function ToString: string;
-    function ToInteger: Integer;
+    function ToString: string; inline;
+    function ToInteger: Integer; inline;
   end;
 
 implementation
@@ -27,16 +25,6 @@ uses
   System.TypInfo;
 
 { TStoneDeeplinkInstallmentTypeHelper }
-
-class operator TStoneDeeplinkInstallmentTypeHelper.Explicit(AInstallmentType: TStoneDeeplinkInstallmentType): string;
-begin
-  Result := AInstallmentType.ToString;
-end;
-
-class operator TStoneDeeplinkInstallmentTypeHelper.Implicit(AInstallmentType: TStoneDeeplinkInstallmentType): string;
-begin
-  Result := AInstallmentType.ToString;
-end;
 
 function TStoneDeeplinkInstallmentTypeHelper.ToInteger: Integer;
 begin

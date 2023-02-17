@@ -3,8 +3,6 @@ unit Stone.Deeplink.Android.Application;
 interface
 
 {$IFDEF ANDROID}
-
-
 uses
   Androidapi.JNI.GraphicsContentViewText,
   System.Messaging,
@@ -64,8 +62,6 @@ type
 implementation
 
 {$IFDEF ANDROID}
-
-
 uses
   Androidapi.Helpers,
   Androidapi.JNI.App,

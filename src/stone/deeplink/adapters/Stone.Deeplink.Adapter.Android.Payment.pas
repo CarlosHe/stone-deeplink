@@ -34,8 +34,10 @@ uses
   Androidapi.JNI.Net,
   Androidapi.JNI.JavaTypes,
   System.SysUtils,
+  System.TypInfo,
   Stone.Deeplink.Helper.Enum.InstallmentType,
   Stone.Deeplink.Helper.Enum.TransactionType,
+  Stone.Deeplink.Enum.InstallmentType,
   Stone.Deeplink.Enum.TransactionType,
   Stone.Deeplink.Enums;
 

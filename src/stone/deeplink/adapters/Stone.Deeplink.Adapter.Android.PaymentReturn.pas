@@ -39,6 +39,7 @@ uses
   Androidapi.JNI.JavaTypes,
   Androidapi.Helpers,
   System.SysUtils,
+  System.StrUtils,
   Stone.Deeplink.Builder.Entity.PaymentReturn,
   Stone.Deeplink.Contract.Builder.Entity.PaymentReturn,
   Stone.Deeplink.Helper.Enum.TransactionType,
