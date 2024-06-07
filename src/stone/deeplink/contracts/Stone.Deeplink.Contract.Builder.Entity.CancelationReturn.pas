@@ -10,7 +10,7 @@ type
 
   IStoneDeeplinkCancelationReturnEntityBuilder = interface
     ['{D661D192-AA14-44D9-8945-7E863AAD9B82}']
-    function SetATK(const AATK: UInt64): IStoneDeeplinkCancelationReturnEntityBuilder;
+    function SetATK(const AATK: string): IStoneDeeplinkCancelationReturnEntityBuilder;
     function SetCanceledAmount(const ACanceledAmount: TStoneDeeplinkAmount): IStoneDeeplinkCancelationReturnEntityBuilder;
     function SetPaymentType(const APaymentType: Integer): IStoneDeeplinkCancelationReturnEntityBuilder;
     function SetTransactionAmount(const ATransactionAmount: TStoneDeeplinkAmount): IStoneDeeplinkCancelationReturnEntityBuilder;

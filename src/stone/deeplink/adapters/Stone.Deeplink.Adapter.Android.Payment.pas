@@ -64,7 +64,7 @@ begin
   begin
     LURI.appendQueryParameter(StringToJString('installment_type'), StringToJString(FPayment.GetInstallmentType.ToString.ToLower));
 
-    if FPayment.GetInstallmentType <> TStoneDeeplinkInstallmentType.None then
+    if (FPayment.GetInstallmentType <> TStoneDeeplinkInstallmentType.None) and (FPayment.GetInstallmentCount > 1) then
       LURI.appendQueryParameter(StringToJString('installment_count'), StringToJString(Byte(FPayment.GetInstallmentCount).ToString));
   end;
 

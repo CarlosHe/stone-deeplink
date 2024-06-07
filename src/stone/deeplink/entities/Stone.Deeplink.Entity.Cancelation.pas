@@ -16,7 +16,7 @@ type
   private
     { private declarations }
     FAmount: TStoneDeeplinkAmount;
-    FATK: UInt64;
+    FATK: string;
     FEditableAmount: TStoneDeeplinkEditableAmountType;
     FReturnScheme: string;
   protected
@@ -25,8 +25,8 @@ type
     { public declarations }
     function GetAmount: TStoneDeeplinkAmount;
     procedure SetAmount(const AAmount: TStoneDeeplinkAmount);
-    function GetATK: UInt64;
-    procedure SetATK(const AATK: UInt64);
+    function GetATK: string;
+    procedure SetATK(const AATK: string);
     function GetEditableAmount: TStoneDeeplinkEditableAmountType;
     procedure SetEditableAmount(const AEditableAmount: TStoneDeeplinkEditableAmountType);
     function GetReturnScheme: string;
@@ -48,7 +48,7 @@ begin
   Result := FAmount;
 end;
 
-function TStoneDeeplinkCancelationEntity.GetATK: UInt64;
+function TStoneDeeplinkCancelationEntity.GetATK: string;
 begin
   Result := FATK;
 end;
@@ -73,7 +73,7 @@ begin
   FAmount := AAmount;
 end;
 
-procedure TStoneDeeplinkCancelationEntity.SetATK(const AATK: UInt64);
+procedure TStoneDeeplinkCancelationEntity.SetATK(const AATK: string);
 begin
   FATK := AATK;
 end;

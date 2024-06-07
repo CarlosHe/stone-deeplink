@@ -19,7 +19,7 @@ type
     FAmount: TStoneDeeplinkAmount;
     FCardholderName: string;
     FITK: string;
-    FATK: UInt64;
+    FATK: string;
     FAuthorizationDateTime: TDateTime;
     FBrand: string;
     FOrderId: TStoneDeeplinkOrderId;
@@ -37,7 +37,7 @@ type
     function SetAmount(const AAmount: TStoneDeeplinkAmount): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetCardholderName(const ACardholderName: string): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetITK(const AITK: string): IStoneDeeplinkPaymentReturnEntityBuilder;
-    function SetATK(const AATK: UInt64): IStoneDeeplinkPaymentReturnEntityBuilder;
+    function SetATK(const AATK: string): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetAuthorizationDateTime(const AAuthorizationDateTime: TDateTime): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetBrand(const ABrand: string): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetOrderId(const AOrderId: TStoneDeeplinkOrderId): IStoneDeeplinkPaymentReturnEntityBuilder;
@@ -102,7 +102,7 @@ begin
   FAmount := AAmount;
 end;
 
-function TStoneDeeplinkPaymentReturnEntityBuilder.SetATK(const AATK: UInt64): IStoneDeeplinkPaymentReturnEntityBuilder;
+function TStoneDeeplinkPaymentReturnEntityBuilder.SetATK(const AATK: string): IStoneDeeplinkPaymentReturnEntityBuilder;
 begin
   Result := Self;
   FATK := AATK;

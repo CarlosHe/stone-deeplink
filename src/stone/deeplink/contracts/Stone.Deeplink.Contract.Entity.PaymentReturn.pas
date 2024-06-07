@@ -16,8 +16,8 @@ type
     procedure SetCardholderName(const ACardholderName: string);
     function GetITK: string;
     procedure SetITK(const AITK: string);
-    function GetATK: UInt64;
-    procedure SetATK(const AATK: UInt64);
+    function GetATK: string;
+    procedure SetATK(const AATK: string);
     function GetAuthorizationDateTime: TDateTime;
     procedure SetAuthorizationDateTime(const AAuthorizationDateTime: TDateTime);
     function GetBrand: string;

@@ -23,7 +23,7 @@ type
   protected
     { protected declarations }
     function GetOrderId(AOrderId: string): TStoneDeeplinkOrderId;
-    function GetATK(AATK: string): UInt64;
+    function GetATK(AATK: string): string;
     // function GetInstallmentCount
   public
     { public declarations }
@@ -51,7 +51,7 @@ begin
   FIntent := AIntent;
 end;
 
-function TStoneDeeplinkCancelationReturnAndroidAdapter.GetATK(AATK: string): UInt64;
+function TStoneDeeplinkCancelationReturnAndroidAdapter.GetATK(AATK: string): string;
 begin
   if not AATK.IsEmpty then
     Result := AATK.ToInt64

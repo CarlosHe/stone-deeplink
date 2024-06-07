@@ -17,7 +17,7 @@ type
   private
     { private declarations }
     FAmount: TStoneDeeplinkAmount;
-    FATK: UInt64;
+    FATK: string;
     FEditableAmount: TStoneDeeplinkEditableAmountType;
     FReturnScheme: string;
   protected
@@ -25,7 +25,7 @@ type
   public
     { public declarations }
     function SetAmount(const AAmount: TStoneDeeplinkAmount): IStoneDeeplinkCancelationEntityBuilder;
-    function SetATK(const AATK: UInt64): IStoneDeeplinkCancelationEntityBuilder;
+    function SetATK(const AATK: string): IStoneDeeplinkCancelationEntityBuilder;
     function SetEditableAmount(const AEditableAmount: TStoneDeeplinkEditableAmountType): IStoneDeeplinkCancelationEntityBuilder;
     function SetReturnScheme(const AReturnScheme: string): IStoneDeeplinkCancelationEntityBuilder;
     function Build: IStoneDeeplinkCancelationEntity;
@@ -64,7 +64,7 @@ begin
   FAmount := AAmount;
 end;
 
-function TStoneDeeplinkCancelationEntityBuilder.SetATK(const AATK: UInt64): IStoneDeeplinkCancelationEntityBuilder;
+function TStoneDeeplinkCancelationEntityBuilder.SetATK(const AATK: string): IStoneDeeplinkCancelationEntityBuilder;
 begin
   Result := Self;
   FATK := AATK;

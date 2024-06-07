@@ -9,8 +9,8 @@ type
 
   IStoneDeeplinkCancelationReturnEntity = interface
     ['{BE1E3F41-3630-40EF-A08F-256B5430398E}']
-    function GetATK: UInt64;
-    procedure SetATK(const AATK: UInt64);
+    function GetATK: string;
+    procedure SetATK(const AATK: string);
     function GetCanceledAmount: TStoneDeeplinkAmount;
     procedure SetCanceledAmount(const ACanceledAmount: TStoneDeeplinkAmount);
     function GetPaymentType: Integer;

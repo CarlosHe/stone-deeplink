@@ -14,7 +14,7 @@ type
     function SetAmount(const AAmount: TStoneDeeplinkAmount): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetCardholderName(const ACardholderName: string): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetITK(const AITK: string): IStoneDeeplinkPaymentReturnEntityBuilder;
-    function SetATK(const AATK: UInt64): IStoneDeeplinkPaymentReturnEntityBuilder;
+    function SetATK(const AATK: string): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetAuthorizationDateTime(const AAuthorizationDateTime: TDateTime): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetBrand(const ABrand: string): IStoneDeeplinkPaymentReturnEntityBuilder;
     function SetOrderId(const AOrderId: TStoneDeeplinkOrderId): IStoneDeeplinkPaymentReturnEntityBuilder;

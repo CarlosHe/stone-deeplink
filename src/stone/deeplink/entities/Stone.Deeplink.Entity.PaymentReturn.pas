@@ -18,7 +18,7 @@ type
     FAmount: TStoneDeeplinkAmount;
     FCardholderName: string;
     FITK: string;
-    FATK: UInt64;
+    FATK: string;
     FAuthorizationDateTime: TDateTime;
     FBrand: string;
     FOrderId: TStoneDeeplinkOrderId;
@@ -40,8 +40,8 @@ type
     procedure SetCardholderName(const ACardholderName: string);
     function GetITK: string;
     procedure SetITK(const AITK: string);
-    function GetATK: UInt64;
-    procedure SetATK(const AATK: UInt64);
+    function GetATK: string;
+    procedure SetATK(const AATK: string);
     function GetAuthorizationDateTime: TDateTime;
     procedure SetAuthorizationDateTime(const AAuthorizationDateTime: TDateTime);
     function GetBrand: string;
@@ -86,7 +86,7 @@ begin
   Result := FAmount;
 end;
 
-function TStoneDeeplinkPaymentReturnEntity.GetATK: UInt64;
+function TStoneDeeplinkPaymentReturnEntity.GetATK: string;
 begin
   Result := FATK;
 end;
@@ -166,7 +166,7 @@ begin
   FAmount := AAmount;
 end;
 
-procedure TStoneDeeplinkPaymentReturnEntity.SetATK(const AATK: UInt64);
+procedure TStoneDeeplinkPaymentReturnEntity.SetATK(const AATK: string);
 begin
   FATK := AATK;
 end;

@@ -14,7 +14,7 @@ type
     constructor Create;
   private
     { private declarations }
-    FATK: UInt64;
+    FATK: string;
     FCanceledAmount: TStoneDeeplinkAmount;
     FPaymentType: Integer;
     FTransactionAmount: TStoneDeeplinkAmount;
@@ -26,8 +26,8 @@ type
     { protected declarations }
   public
     { public declarations }
-    function GetATK: UInt64;
-    procedure SetATK(const AATK: UInt64);
+    function GetATK: string;
+    procedure SetATK(const AATK: string);
     function GetCanceledAmount: TStoneDeeplinkAmount;
     procedure SetCanceledAmount(const ACanceledAmount: TStoneDeeplinkAmount);
     function GetPaymentType: Integer;
@@ -54,7 +54,7 @@ begin
 
 end;
 
-function TStoneDeeplinkCancelationReturnEntity.GetATK: UInt64;
+function TStoneDeeplinkCancelationReturnEntity.GetATK: string;
 begin
   Result := FATK;
 end;
@@ -99,7 +99,7 @@ begin
   Result := Self.Create;
 end;
 
-procedure TStoneDeeplinkCancelationReturnEntity.SetATK(const AATK: UInt64);
+procedure TStoneDeeplinkCancelationReturnEntity.SetATK(const AATK: string);
 begin
   FATK := AATK;
 end;
