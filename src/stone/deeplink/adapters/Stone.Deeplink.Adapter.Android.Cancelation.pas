@@ -51,7 +51,7 @@ begin
     .authority(StringToJString('cancel'))
     .scheme(StringToJString('cancel-app'))
     .appendQueryParameter(StringToJString('returnscheme'), StringToJString(FCancelation.GetReturnScheme))
-    .appendQueryParameter(StringToJString('atk'), StringToJString(FCancelation.GetAtk.ToString))
+    .appendQueryParameter(StringToJString('atk'), StringToJString(FCancelation.GetAtk))
     .appendQueryParameter(StringToJString('amount'), StringToJString(UInt64(FCancelation.GetAmount).ToString))
     .appendQueryParameter(StringToJString('editable_amount'), StringToJString(Integer(FCancelation.GetEditableAmount).ToString));
 

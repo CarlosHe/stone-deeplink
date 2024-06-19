@@ -19,12 +19,9 @@ type
   private
     { private declarations }
     FIntent: JIntent;
-
   protected
     { protected declarations }
     function GetOrderId(AOrderId: string): TStoneDeeplinkOrderId;
-    function GetATK(AATK: string): string;
-    // function GetInstallmentCount
   public
     { public declarations }
     function GetCancelationReturn: IStoneDeeplinkCancelationReturnEntity;
@@ -51,14 +48,6 @@ begin
   FIntent := AIntent;
 end;
 
-function TStoneDeeplinkCancelationReturnAndroidAdapter.GetATK(AATK: string): string;
-begin
-  if not AATK.IsEmpty then
-    Result := AATK.ToInt64
-  else
-    Result := 0;
-end;
-
 function TStoneDeeplinkCancelationReturnAndroidAdapter.GetOrderId(AOrderId: string): TStoneDeeplinkOrderId;
 begin
   if not AOrderId.IsEmpty then
@@ -72,7 +61,7 @@ var
   LCancelationReturnEntityBuilder: IStoneDeeplinkCancelationReturnEntityBuilder;
 begin
   LCancelationReturnEntityBuilder := TStoneDeeplinkCancelationReturnEntityBuilder.New
-    .SetATK(GetATK(JStringToString(FIntent.getData.getQueryParameter(StringToJString('atk')))))
+    .SetATK(JStringToString(FIntent.getData.getQueryParameter(StringToJString('atk'))))
     .SetCanceledAmount(JStringToString(FIntent.getData.getQueryParameter(StringToJString('canceledamount'))).ToInt64)
     .SetPaymentType(JStringToString(FIntent.getData.getQueryParameter(StringToJString('paymenttype'))).ToInteger)
     .SetTransactionAmount(JStringToString(FIntent.getData.getQueryParameter(StringToJString('transactionamount'))).ToInt64)
